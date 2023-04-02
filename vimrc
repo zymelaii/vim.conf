@@ -2,7 +2,7 @@ vim9script
 
 #! vimrc 根目录
 if !exists('g:VIMRC_HOME')
-    const g:VIMRC_HOME = expand('%:p:h')
+    const g:VIMRC_HOME = '~/vimfiles'
 endif
 
 #! 骑上我心爱的小毛驴~
@@ -17,7 +17,7 @@ const scripts: list<string> = [
 
 #! 载入配置
 for script in scripts
-    silent! execute 'source ' .. g:VIMRC_HOME .. '/' .. script
+    execute 'source ' .. g:VIMRC_HOME .. '/' .. script
 endfor
 
 #! FZF 配置

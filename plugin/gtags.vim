@@ -14,12 +14,12 @@
 " it under the terms of the GNU General Public License as published by
 " the Free Software Foundation, either version 3 of the License, or
 " (at your option) any later version.
-" 
+"
 " This program is distributed in the hope that it will be useful,
 " but WITHOUT ANY WARRANTY; without even the implied warranty of
 " MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 " GNU General Public License for more details.
-" 
+"
 " You should have received a copy of the GNU General Public License
 " along with this program.  If not, see <http://www.gnu.org/licenses/>.
 "
@@ -138,9 +138,9 @@
 " If you omitted an argument and input only <ENTER> key to the prompt,
 " vim shows list of all files in the project.
 "
-" Since all short options are sent to global(1) as is, you can 
+" Since all short options are sent to global(1) as is, you can
 " use the -i, -o, -O, and so on.
-" 
+"
 " For example, if you want to ignore case distinctions in pattern.
 "
 "       :Gtags -gi paTtern
@@ -254,11 +254,11 @@ if !exists("g:Gtags_Close_When_Single")
     let g:Gtags_Close_When_Single = 0
 endif
 
-" -- ctags-x format 
+" -- ctags-x format
 " let Gtags_Result = "ctags-x"
 " let Gtags_Efm = "%*\\S%*\\s%l%\\s%f%\\s%m"
 "
-" -- ctags format 
+" -- ctags format
 " let Gtags_Result = "ctags"
 " let Gtags_Efm = "%m\t%f\t%l"
 "
@@ -318,7 +318,7 @@ function! s:Extract(line, target)
     endif
     while l:i < l:length && a:line[l:i] == ' '
        let l:i = l:i + 1
-    endwhile 
+    endwhile
     while l:i < l:length
         if a:line[l:i] == "-" && l:force_pattern == 0
             let l:i = l:i + 1
@@ -326,13 +326,13 @@ function! s:Extract(line, target)
             if l:i < l:length && a:line[l:i] == '-'
                 while l:i < l:length && a:line[l:i] != ' '
                    let l:i = l:i + 1
-                endwhile 
+                endwhile
             else
                 while l:i < l:length && a:line[l:i] != ' '
                     let l:c = a:line[l:i]
                     let l:option = l:option . l:c
                     let l:i = l:i + 1
-                endwhile 
+                endwhile
                 if l:c ==# 'e'
                     let l:force_pattern = 1
                 endif
@@ -349,7 +349,7 @@ function! s:Extract(line, target)
                      let l:pattern = l:pattern . a:line[l:i]
                  endif
                 let l:i = l:i + 1
-            endwhile 
+            endwhile
             if a:target == 'pattern'
                 return l:pattern
             endif
@@ -357,8 +357,8 @@ function! s:Extract(line, target)
         " Skip blanks.
         while l:i < l:length && a:line[l:i] == ' '
                let l:i = l:i + 1
-        endwhile 
-    endwhile 
+        endwhile
+    endwhile
     if a:target == 'option'
         return l:option
     endif
@@ -424,7 +424,7 @@ function! s:ExecLoad(option, long_option, pattern, flags)
     if l:isfile == 1
         let l:cmd = s:GlobalCommand('--path-style=absolute') . ' ' . l:option . ' ' . g:Gtags_Shell_Quote_Char . a:pattern . g:Gtags_Shell_Quote_Char
     else
-        let l:cmd = s:GlobalCommand('--path-style=absolute') . ' ' . l:option . 'e ' . g:Gtags_Shell_Quote_Char . a:pattern . g:Gtags_Shell_Quote_Char 
+        let l:cmd = s:GlobalCommand('--path-style=absolute') . ' ' . l:option . 'e ' . g:Gtags_Shell_Quote_Char . a:pattern . g:Gtags_Shell_Quote_Char
     endif
 
     let l:result = system(l:cmd)
@@ -440,7 +440,7 @@ function! s:ExecLoad(option, long_option, pattern, flags)
         endif
         return
     endif
-    if l:result == '' 
+    if l:result == ''
         if l:option =~# 'f'
             call s:Error('Tag not found in ' . a:pattern . '.')
         elseif l:option =~# 'P'
@@ -565,7 +565,7 @@ function! GtagsCandidateCore(lead, line, pos)
             let l:pattern = a:lead . '*'
         endif
         return glob(l:pattern)
-    else 
+    else
         return system(s:GlobalCommand() . ' ' . '-c' . s:option . ' ' . a:lead)
     endif
 endfunction

@@ -69,4 +69,3 @@ export def GetTabBarFormatString(): string
     bar ..= '%T%#TabLineFill#%='
     return bar
 enddef
-

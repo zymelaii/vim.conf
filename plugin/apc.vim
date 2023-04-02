@@ -113,17 +113,17 @@ function! s:apc_enable()
 	if g:apc_enable_tab
 		inoremap <silent><buffer><expr> <tab>
 					\ pumvisible()? "\<c-n>" :
-					\ <SID>check_back_space() ? "\<tab>" : 
+					\ <SID>check_back_space() ? "\<tab>" :
 					\ get(b:, 'apc_trigger', g:apc_trigger)
 		inoremap <silent><buffer><expr> <s-tab>
 					\ pumvisible()? "\<c-p>" : "\<s-tab>"
 		let b:apc_init_tab = 1
 	endif
 	if get(g:, 'apc_cr_confirm', 0) == 0
-		inoremap <silent><buffer><expr> <cr> 
+		inoremap <silent><buffer><expr> <cr>
 					\ pumvisible()? "\<c-y>\<cr>" : "\<cr>"
 	else
-		inoremap <silent><buffer><expr> <cr> 
+		inoremap <silent><buffer><expr> <cr>
 					\ pumvisible()? "\<c-y>" : "\<cr>"
 	endif
 	inoremap <silent><buffer><expr> <bs> <SID>on_backspace()
@@ -138,7 +138,7 @@ endfunc
 function! s:apc_disable()
 	if get(b:, 'apc_init_autocmd', 0)
 		augroup ApcEventGroup
-			au! 
+			au!
 		augroup END
 	endif
 	if get(b:, 'apc_init_tab', 0)
@@ -186,4 +186,3 @@ augroup ApcInitGroup
 	au BufEnter * call s:apc_check_init()
 	au TabEnter * call s:apc_check_init()
 augroup END
-

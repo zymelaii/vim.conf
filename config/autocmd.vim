@@ -13,4 +13,3 @@ augroup LocalRoutineTasks
     #! 文件写入前清除行尾空白
     autocmd BufWritePre * RemoveTrailingBlanks()
 augroup END
-

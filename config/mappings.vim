@@ -51,8 +51,8 @@ nnoremap <C-k><Char-45> :split<CR><C-w><Down>
 #@}
 
 #! 切换文件浏览器侧边栏
-noremap <C-k><C-b> :Lexplore<CR>
-inoremap <C-k><C-b> <C-o>:Lexplore<CR>
+noremap <C-k><C-b> <ScriptCmd>Lexplore<CR>
+inoremap <C-k><C-b> <ScriptCmd>Lexplore<CR>
 
 #! 匹配括号跳转
 noremap <C-k><C-m> %

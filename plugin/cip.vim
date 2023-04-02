@@ -1,12 +1,12 @@
 " vim: set noet fenc=utf-8 ff=unix sts=4 sw=4 ts=4 :
 "
-" cip.vim completion in-place 
+" cip.vim completion in-place
 "
 " Created by zymelaii on 2023/01/26
 " Last Modified: 2023/01/27 00:40
 "
 " Features:
-" 
+"
 " - use EnableCIP/DisableCIP to toggle for certain file.
 "
 " Usage:
@@ -46,7 +46,7 @@ endfunction
 function! s:getKeywordPrefix(context)
 	return matchstr(a:context, '\(\k\{' . g:cipMinTriggerLength . ',}\)$')
 endfunction
- 
+
 function! s:readyToCollectKeyword(context)
 	if g:cipMinTriggerLength <= 0
 		return 0
@@ -59,7 +59,7 @@ function! s:readyToCollectKeyword(context)
 endfunction
 
 function! s:updateStatus()
-	let b:cipLastCurPosX = col('.') - 1 
+	let b:cipLastCurPosX = col('.') - 1
 	let b:cipLastCurPosY = line('.') - 1
 	let b:cipCurrentTick = b:changedtick
 endfunction()
@@ -70,7 +70,7 @@ function! s:determineTabKeyMapping()
 	endif
 
 	const context = s:getLocalContext()
-	const prefix = s:getKeywordPrefix(context)	
+	const prefix = s:getKeywordPrefix(context)
 	const ci = complete_info()
 	const items = ci["items"]
 	const totalNumber = len(items)
@@ -158,7 +158,7 @@ function! s:cipEnable()
 endfunction
 
 function! s:cipDisable()
-	augroup cipEventGroup	
+	augroup cipEventGroup
 		autocmd!
 	augroup END
 
